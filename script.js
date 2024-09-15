@@ -3,117 +3,182 @@
 
 const filtersContainer = document.querySelector('.filters-container');
 const filteredCountainer = document.querySelector('.filtered-item');
-
-//  Filter functionality
+/*/////////////////////////////////*/
+//  add/remove filters containers
+//
 filtersContainer.addEventListener('click', function(e) {
    const clicked = e.target.closest('.btn-filter');
    document.querySelector(`.filter-content-${clicked.dataset.filter}`).classList.toggle('hidden');    
    //1. toggle tu remove   2. roca erti gaxsnii maqvs da meore filtrs vaklikeb
 })
-
-
-// get user inputs
-const filterDetailContainer =document.querySelector('.categories-box');
-
-filterDetailContainer.addEventListener('click', function(e) {
-    let region=[];
+/*/////////////////////////////////*/
+//  Get Filters Inputs
+//
+const regionsContent =document.querySelector('.categories-box');
+let regions=[];
+regionsContent.addEventListener('click', function(e) {
     document.querySelectorAll('[type="checkbox"]').forEach(item => {
         if(item.checked === true) {
-            region.push(item.value);
+            regions.push(item.value);
         }
     })
-    
-   /* const html = `
-    <div class="filtered-area">
-        <p>${region[0]}</p>
-        <ion-icon  class="close-icon" name="close-outline"></ion-icon>
-    </div>
-    `
-    filteredCountainer.textContent=''
-    filteredCountainer.insertAdjacentHTML('afterbegin', html);*/
-    
 })
+//
+//
 const minPriceInput = document.querySelector('.min-price-input'); 
 const maxPriceInput = document.querySelector('.max-price-input'); 
-
-document.querySelectorAll('.price-categorie').forEach(item => {
+const minPrice = [];
+//
+//
+document.querySelectorAll('.minPrice-categorie').forEach(item => {
     item.addEventListener('click', function(e) {
-        const clicked = e.target.closest('.price-categorie');
-        console.log(clicked.textContent);
-
-        minPriceInput.value = `${clicked.textContent}`
-        if (minPriceInput.value <= `${clicked.textContent}`) {
-            maxPriceInput.value = `${clicked.textContent}`;
-        }   
+        const clicked = e.target.closest('.minPrice-categorie');
+        minPriceInput.value = clicked.textContent;
+        minPrice.push(clicked.textContent);
     })
 })
-
+console.log(minPrice);
+//
+//
+const maxPrice =[];
+document.querySelectorAll('.maxPrice-categorie').forEach(item => {
+    item.addEventListener('click', function(e) {
+        const clicked = e.target.closest('.maxPrice-categorie');
+        maxPriceInput.value = clicked.textContent;
+        maxPrice.push(clicked.textContent);
+    })
+})
+console.log(maxPrice);
+//
+//
 const minAreaInput = document.querySelector('.min-area-input'); 
 const maxAreaInput = document.querySelector('.max-area-input'); 
-document.querySelectorAll('.area-categorie').forEach(item => {
+
+const minArea = [];
+document.querySelectorAll('.minArea-categorie').forEach(item => {
     item.addEventListener('click', function(e) {
-        const clicked = e.target.closest('.area-categorie');
-        console.log(clicked.textContent);
-
-        minAreaInput.value = `${clicked.textContent}`
-        if (minAreaInput.value <= `${clicked.textContent}`) {
-            maxAreaInput.value = `${clicked.textContent}`;
-        }   
+        const clicked = e.target.closest('.minArea-categorie');
+        minAreaInput.value = clicked.textContent;
+        minArea.push(minAreaInput.value);
     })
+});
+console.log(minArea);
+//
+const maxArea = [];
+document.querySelectorAll('.maxArea-categorie').forEach(item => {
+    item.addEventListener('click', function(e) {
+        const clicked = e.target.closest('.maxArea-categorie');
+        maxAreaInput.value = clicked.textContent; 
+        maxArea.push(maxAreaInput.value);
+    })
+});
+console.log(maxArea);
+/****************/
+const bedroomsAmount = [];
+document.querySelector('.bedrooms-amount').addEventListener('click', function(e){
+   const clicked =  e.target.closest('.bedrooms-amount');
+   console.log(clicked.textContent);
+   bedroomsAmount.push(clicked.textContent);
 })
+console.log(bedroomsAmount);
 
 
-
-
-
-filterDetailContainer.addEventListener('click', function(e) {
+filtersContainer.addEventListener('click', function(e) {
+    
     const clicked = e.target.closest('.btn-choose');
-     
-      /*********************/
-        let region=[];
-        document.querySelectorAll('[type="checkbox"]').forEach(item => {
-            if(item.checked === true) {
-                region.push(item.value);
-            }
-        })
-        let html = `
-        <p>${region[0]}</p>
-        <ion-icon   class="close-icon" name="close-outline"></ion-icon>
-        `
-      /*********************** */
+    
+    if(!clicked) return;
 
-    document.querySelectorAll('.price-categorie').forEach(item => {
-        item.addEventListener('click', function(e) {
-            const clicked = e.target.closest('.price-categorie');
-            const minPrice = `${clicked.textContent}`;
-            if (minPrice <= `${clicked.textContent}`) {
-                minPriceInput.value = `${clicked.textContent}`;
-            } else {
-                maxPriceInput.value = `${clicked.textContent}`;
-            }
-            
-                html = `
-            <p>${minPrice} - ${minPrice}</p>
+    let html =
+    regions.map(region => `
+    <div class="filtered-item">
+        <p>${region}</p>
+        <ion-icon  class="close-icon" name="close-outline"></ion-icon>
+    </div>` );
+    
+    html += 
+         `<div class="filtered-item">
+        <p>${minPrice}-${maxPrice}</p>
+        <ion-icon class="close-icon" name="close-outline"></ion-icon>
+        </div>`
+        minPrice[0] = maxPrice[0] = "";
+    
+
+        /*
+        minPrices.map(price =>  `
+        <div class="filtered-item">
+            <p>${price}-1000 000</p>
             <ion-icon   class="close-icon" name="close-outline"></ion-icon>
-            `;
+            </div>`);
+            maxPrice.map(price => 
+            <p>100000-${price}</p>`);*/
+       
+        html += 
+            ` <div class="filtered-item">
+           <p>${minArea}-${maxArea}</p>
+           <ion-icon class="close-icon" name="close-outline"></ion-icon>
+           </div>`
+          
+        html += `
+        <div class="filtered-item">
+            <p>${bedroomsAmount}</p>
+            <ion-icon   class="close-icon" name="close-outline"></ion-icon>
+        </div>`
 
-        })
-        
-        
 
-    })
      
+    filteredCountainer.innerHTML='';
+    filteredCountainer.insertAdjacentHTML('afterbegin', html);
+});
+/*//////////////////////////////////////////*/
+//  Render Regions
+//
+const renderRegions = async function() {
+    const res = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/regions');    
+    const datas = await res.json();
+    console.log(datas);
 
+    datas.map((data) =>  {
+        const html = `
+        <div class="input-label-container">
+        <input
+          class="checkbox"
+          type="checkbox"
+          id="region1"
+          name="region1"
+          value="${data.name}"
+        />
+        <label for="region1"> ${data.name}</label>
+      </div>
+        `;
+        regionsContent.insertAdjacentHTML('afterbegin', html);
+    })
 
-    
+};
+renderRegions();
+/*//////////////////////////////////////////*/
+//  Close filtered option
+//
+const filteredContainer = document.querySelector('.filtered-container');
+filteredContainer.addEventListener('click', function(e){
+    const clicked = e.target.closest('.close-icon');
+    if(!clicked) return;
 
-        filteredCountainer.textContent=''
-        filteredCountainer.insertAdjacentHTML('afterbegin', html);
-    
-
-
-
+    const filteredItem = document.querySelector('.filtered-item');
+    filteredItem.remove();
 
 })
+
+/*//////////////////////////////////////////*/
+//  Clear button
+//
+const btnClear =document.querySelector('.btn-clear');     //შიგნით ხომ არ ჩავსვა?
+btnClear.addEventListener('click', function() {
+
+    const filteredInputs = document.querySelector('.filtered-inputs');
+    filteredInputs.remove();
+ })
+
+
 
 
