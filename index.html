@@ -101,53 +101,10 @@
                   />
                   <label for="region1"> ქართლი</label>
                 </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> ქართლი</label>
-                </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> ქართლი</label>
-                </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> ქართლი</label>
-                </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> ქართლი</label>
-                </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> ქართლი</label>
-                </div>
               </div>
-              <button type="submit" class="btn btn-choose">არჩევა</button>
+              <button type="submit" class="btn btn-full btn-choose">
+                არჩევა
+              </button>
             </div>
           </div>
 
@@ -200,7 +157,9 @@
                   </ul>
                 </div>
               </div>
-              <button type="submit" class="btn btn-choose">არჩევა</button>
+              <button type="submit" class="btn btn-full btn-choose">
+                არჩევა
+              </button>
             </div>
           </div>
 
@@ -253,7 +212,9 @@
                   </ul>
                 </div>
               </div>
-              <button type="submit" class="btn btn-choose">არჩევა</button>
+              <button type="submit" class="btn btn-full btn-choose">
+                არჩევა
+              </button>
             </div>
           </div>
 
@@ -272,17 +233,21 @@
             >
               <p class="heading-filter">საძინებლების რაოდენობა:</p>
               <div class="bedrooms-amount"><span>2</span></div>
-              <button class="btn btn-choose">არჩევა</button>
+              <button class="btn btn-full btn-choose">არჩევა</button>
             </div>
           </div>
         </div>
 
         <div>
-          <button class="btn btn-listing">+ ლისტინგის დამატება</button>
-          <button class="btn btn-agent">+ აგენტის დამატება</button>
+          <button class="btn btn-full btn-primary btn-addListing">
+            + ლისტინგის დამატება
+          </button>
+          <button class="btn btn-outline btn-primary btn-addAgent">
+            + აგენტის დამატება
+          </button>
         </div>
       </div>
-      <div class="filtered-container">
+      <div class="filteredInputs-container">
         <div class="filtered-inputs">
           <div class="filtered-item">
             <p>თბილისი</p>
@@ -419,6 +384,56 @@
           </figure>
         </div>
       </section>
+      <div class="overlay hidden"></div>
+      <div class="add-agent-window hidden">
+        <h2 class="heading">აგენტის დამატება</h2>
+        <form class="cta-form">
+          <div class="personal-info-container grid">
+            <div>
+              <label for="first-name">სახელი* </label>
+              <input
+                class="form-input-fullName"
+                id="first-name"
+                type="text"
+                required
+              />
+              <p class="valid-inputs">
+                <span>&#10003;</span>მინიმუმ ორი სიმბოლო
+              </p>
+            </div>
+            <div>
+              <label for="last-name">გვარი </label>
+              <input class="form-input-fullName" id="last-name" type="text" />
+              <p class="valid-inputs">&#10003; მინიმუმ ორი სიმბოლო</p>
+            </div>
+            <div>
+              <label for="email">ელ.ფოსტა* </label>
+              <input
+                class="form-input-fullName"
+                id="email"
+                type="email"
+                required
+              />
+              <p class="valid-inputs">
+                <span>&#10003;</span> გამოიყენეთ @redberry.ge ფოსტა
+              </p>
+            </div>
+            <div>
+              <label for="phone">ტელეფონის ნომერი* </label>
+              <input class="form-input-fullName" id="phone" type="tel" />
+              <p class="valid-inputs"><span>&#10003;</span>მხოლოდ რიცხვები</p>
+            </div>
+          </div>
+          <div>
+            <label for="file-upload">ატვირთეთ ფოტო*</label>
+            <input type="file" id="file-upload" class="file-upload" required />
+          </div>
+          <div class="btns-container">
+            <button class="btn btn-outline btn-secondary">გაუქმება</button>
+            <button class="btn btn-full btn-secondary">დაამატე აგენტი</button>
+          </div>
+        </form>
+      </div>
     </main>
     <script
       type="module"

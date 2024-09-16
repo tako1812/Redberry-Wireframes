@@ -14,13 +14,26 @@ body {
   font-family: "Helvatica Neue";
   line-height: 1;
   font-weight: 400;
-  color: #555;
+  color: #333;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
 }
 .btn,
 .btn:link,
 .btn:visited {
   display: inline-block;
   text-decoration: none;
+  background: none;
   font-size: 1.2rem;
   letter-spacing: 0.8px;
   font-weight: 600;
@@ -28,32 +41,37 @@ body {
   border: none;
   cursor: pointer;
   font-family: inherit;
-  background-color: #fff;
 }
-
-.btn-choose {
-  /*****************************************************აქ link და visited არ უნდა? */
-  padding: 0.5rem 1.1rem;
-  align-self: end;
-  background-color: #f93b1d;
-}
-
-.btn-choose:hover,
-.btn-choose:active {
-  background-color: #df3014;
-}
-.btn-listing {
+.btn-full {
   background-color: #f93b1d;
   color: #fff;
-  padding: 0.8rem 1.6rem;
-  font-size: 1.4rem;
 }
-.btn-agent {
-  padding: 0.8rem 1.6rem;
-  font-size: 1.4rem;
-  color: #f93b1d;
+.btn-full:hover,
+.btn-full:active {
+  background-color: #df3014;
+}
+.btn-outline {
+  color: #df3014;
   background-color: #fff;
   border: 1.5px solid #f93b1d;
+}
+.btn-outline:hover,
+.btn-outline:active {
+  background-color: #f93b1d;
+  color: #fff;
+}
+/***************************/
+.btn-choose {
+  padding: 0.5rem 1.1rem;
+  align-self: end;
+}
+.btn-primary {
+  font-size: 1.4rem;
+  padding: 0.8rem 1.6rem;
+}
+.btn-secondary {
+  font-size: 1rem;
+  padding: 1rem 1.3rem;
 }
 .btn-filter:hover,
 .btn-filter:active {
@@ -61,15 +79,13 @@ body {
   padding: 0.3rem 0.8rem;
 }
 
+/*///////////////////////////*/
+/*//////////////////////////*/
 .filters-buttons-container {
   display: flex;
   justify-content: space-between;
   padding: 5rem 2rem 2rem;
 }
-
-/***********************************/
-/***********************************/
-
 .filters-container {
   display: flex;
   align-items: center;
@@ -81,11 +97,6 @@ body {
 }
 
 /****************************/
-.container {
-  max-width: 120rem;
-  padding: 0 3.2rem;
-  margin: 0 auto;
-}
 .logo {
   height: 1.9rem;
   margin: 2rem;
@@ -110,18 +121,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  /*display: none;*/
 }
 .hidden {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
-/*
-.filter-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}*/
 .categories-box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -196,10 +200,14 @@ input[type="checkbox"] {
 }
 /********************************/
 /********************************/
-.filtered-container {
+.filteredInputs-container {
   display: flex;
   gap: 1.2rem;
   padding: 0 2rem;
+}
+.filtered-inputs {
+  display: flex;
+  gap: 1.2rem;
 }
 .filtered-item {
   display: flex;
@@ -209,7 +217,7 @@ input[type="checkbox"] {
   padding: 0.7rem 1.2rem;
 }
 .filtered-item p {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 .close-icon {
@@ -264,4 +272,65 @@ input[type="checkbox"] {
 }
 .listing-icon {
   font-size: 1.8rem;
+}
+/*//////////////////*/
+/*Add Agent window*/
+.add-agent-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70rem;
+  height: 40rem;
+  background-color: #fff;
+  border-radius: 9px;
+
+  padding: 5rem 4rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.heading {
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 3rem;
+}
+.cta-form label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.cta-form input {
+  width: 100;
+  padding: 0.8rem 3rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.valid-inputs {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+.btns-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 100;
 }
