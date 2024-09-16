@@ -28,7 +28,7 @@ body {
   border: none;
   cursor: pointer;
   font-family: inherit;
-  background-color:#fff;
+  background-color: #fff;
 }
 
 .btn-choose {
@@ -42,7 +42,7 @@ body {
 .btn-choose:active {
   background-color: #df3014;
 }
-.btn-listing  {
+.btn-listing {
   background-color: #f93b1d;
   color: #fff;
   padding: 0.8rem 1.6rem;
@@ -53,37 +53,32 @@ body {
   font-size: 1.4rem;
   color: #f93b1d;
   background-color: #fff;
-  border: 1.5px solid #f93b1d ;
+  border: 1.5px solid #f93b1d;
 }
 .btn-filter:hover,
 .btn-filter:active {
   background-color: #0215261e;
   padding: 0.3rem 0.8rem;
-
 }
 
 .filters-buttons-container {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   padding: 5rem 2rem 2rem;
-
 }
 
 /***********************************/
 /***********************************/
 
 .filters-container {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap:3rem;
-  border:1px solid #999999b5;
+  gap: 3rem;
+  border: 1px solid #999999b5;
   border-radius: 5px;
-  padding:  1rem;
-
+  padding: 1rem;
 }
-
-
 
 /****************************/
 .container {
@@ -193,36 +188,80 @@ input[type="checkbox"] {
 .bedrooms-amount {
   border: 1px solid #999;
   align-self: flex-start;
-  padding:1.3rem;
-  border-radius:5px;
+  padding: 1.3rem;
+  border-radius: 5px;
 }
 .bedrooms-amount span {
-  font-size: 1.2rem;;
+  font-size: 1.2rem;
 }
 /********************************/
 /********************************/
 .filtered-container {
-  display:flex;
-  gap:1.2rem;
-  padding:0 2rem;
+  display: flex;
+  gap: 1.2rem;
+  padding: 0 2rem;
 }
 .filtered-item {
-  display:flex;
-  align-items:center;
-  border:1px solid #999;
-  border-radius:12px;
-  padding:0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid #999;
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
 }
 .filtered-item p {
   font-size: 1.7rem;
-  font-weight:500;
-
+  font-weight: 500;
 }
 .close-icon {
   font-size: 2rem;
-  font-weight:500;
+  font-weight: 500;
 }
 .btn-clear {
   font-size: 1.8rem;
-  font-weight:700;
+  font-weight: 700;
+}
+/*/////////////////////////*/
+/* listing Card*/
+.listings-section {
+  padding: 4.8rem 2rem 9.6rem;
+}
+.listings-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+.listing-img {
+  width: 100%;
+  height: 25rem;
+  border-radius: 9px;
+  object-fit: cover;
+}
+.cards-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+
+  padding: 1.2rem 1.5rem 2rem;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+  border-radius: 9px;
+}
+.listing-detail-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.listing-description-container {
+  display: flex;
+  gap: 3rem;
+}
+.listing-price {
+  color: #000;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.listing-detail {
+  font-size: 1.8rem;
+}
+.listing-icon {
+  font-size: 1.8rem;
 }

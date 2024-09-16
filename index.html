@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
-
     <link rel="stylesheet" href="/style/style.css" />
     <script defer src="script.js"></script>
     <title>Wireframes</title>
@@ -22,14 +20,16 @@
       </div>
     </header>
     <main>
-      <div class="filters-buttons-container ">
-        <div class="filters-container ">
+      <div class="filters-buttons-container">
+        <div class="filters-container">
           <div class="regions">
             <div class="filter-box">
-              <button class="heading-filter btn btn-filter" data-filter="1"> რეგიონი <ion-icon
-                class="filter-icon"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <button class="heading-filter btn btn-filter" data-filter="1">
+                რეგიონი
+                <ion-icon
+                  class="filter-icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
               </button>
             </div>
             <div class="filter-detail-container filter-content-1 hidden">
@@ -153,17 +153,28 @@
 
           <div class="prices-countainer">
             <div class="filter-box">
-              <button class="heading-filter btn btn-filter" data-filter="2"> საფასო კატეგორია<ion-icon
-                class="filter-icon"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <button class="heading-filter btn btn-filter" data-filter="2">
+                საფასო კატეგორია<ion-icon
+                  class="filter-icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
               </button>
             </div>
-            <div class="filter-detail-container price-container filter-content-2 hidden">
+            <div
+              class="filter-detail-container price-container filter-content-2 hidden"
+            >
               <p class="heading-filter">ფასის მიხედვით:</p>
               <div class="price-userInput">
-                <input class="min-price-input" type="text" placeholder="დან      ₾" />
-                <input class="max-price-input" type="text" placeholder="დან      ₾" />
+                <input
+                  class="min-price-input"
+                  type="text"
+                  placeholder="დან      ₾"
+                />
+                <input
+                  class="max-price-input"
+                  type="text"
+                  placeholder="დან      ₾"
+                />
               </div>
               <div class="price-box">
                 <div>
@@ -189,24 +200,34 @@
                   </ul>
                 </div>
               </div>
-              <button type="submit"class="btn btn-choose">არჩევა</button>
+              <button type="submit" class="btn btn-choose">არჩევა</button>
             </div>
           </div>
 
-
           <div class="area-countainer">
             <div class="flex-container">
-              <button class="heading-filter btn btn-filter" data-filter="3">ფართობი<ion-icon
-                class="filter-icon"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <button class="heading-filter btn btn-filter" data-filter="3">
+                ფართობი<ion-icon
+                  class="filter-icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
               </button>
             </div>
-            <div class="filter-detail-container price-container filter-content-3 hidden">
+            <div
+              class="filter-detail-container price-container filter-content-3 hidden"
+            >
               <p class="heading-filter">ფართობის მიხედვით:</p>
               <div class="price-userInput">
-                <input class="min-area-input" type="text" placeholder="დან      მ&sup" />
-                <input class="max-area-input" type="text" placeholder="დან      მ&sup" />
+                <input
+                  class="min-area-input"
+                  type="text"
+                  placeholder="დან      მ&sup"
+                />
+                <input
+                  class="max-area-input"
+                  type="text"
+                  placeholder="დან      მ&sup"
+                />
               </div>
               <div class="price-box">
                 <div>
@@ -238,13 +259,17 @@
 
           <div class="bedroomsAmount-countainer">
             <div class="filter-box">
-              <button class="heading-filter btn btn-filter" data-filter="4">საძინებლების რაოდენობა <ion-icon
-                class="filter-icon"
-                name="chevron-down-outline"
-              ></ion-icon>
+              <button class="heading-filter btn btn-filter" data-filter="4">
+                საძინებლების რაოდენობა
+                <ion-icon
+                  class="filter-icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
               </button>
             </div>
-            <div class="filter-detail-container price-container filter-content-4 hidden">
+            <div
+              class="filter-detail-container price-container filter-content-4 hidden"
+            >
               <p class="heading-filter">საძინებლების რაოდენობა:</p>
               <div class="bedrooms-amount"><span>2</span></div>
               <button class="btn btn-choose">არჩევა</button>
@@ -259,25 +284,141 @@
       </div>
       <div class="filtered-container">
         <div class="filtered-inputs">
-            <div class="filtered-item">
-              <p>თბილისი</p>
-            <ion-icon  class="close-icon" name="close-outline"></ion-icon>
+          <div class="filtered-item">
+            <p>თბილისი</p>
+            <ion-icon class="close-icon" name="close-outline"></ion-icon>
           </div>
           <div class="filtered-item">
             <p>50მ&sup2 - 90მ&sup2</p>
-            <ion-icon   class="close-icon" name="close-outline"></ion-icon>
+            <ion-icon class="close-icon" name="close-outline"></ion-icon>
           </div>
           <div class="filtered-item">
             <p>2000000-1000000</p>
-            <ion-icon   class="close-icon" name="close-outline"></ion-icon>
+            <ion-icon class="close-icon" name="close-outline"></ion-icon>
           </div>
           <div class="filtered-item">
             <p>1</p>
-            <ion-icon   class="close-icon" name="close-outline"></ion-icon>
+            <ion-icon class="close-icon" name="close-outline"></ion-icon>
           </div>
         </div>
         <button type="submit" class="btn btn-clear">გასუფთავება</button>
       </div>
+      <section class="listings-section">
+        <div class="listings-container">
+          <figure class="listing-card">
+            <img
+              class="listing-img"
+              src="assets/appartment-1.jpg"
+              rel="image of appartment"
+            />
+            <div class="cards-content">
+              <h1 class="listing-price">80 000 ₾</h1>
+              <div class="listing-detail-box">
+                <ion-icon class="listing-icon" name="location"></ion-icon>
+                <p class="listing-detail">თბილისი ი.ჭავჭავაძის 53</p>
+              </div>
+              <div class="listing-description-container">
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="bed"></ion-icon>
+                  <p class="listing-detail">2</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="expand"></ion-icon>
+                  <p class="listing-detail">55მ</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="pin"></ion-icon>
+                  <p class="listing-detail">0160</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+          <figure class="listing-card">
+            <img
+              class="listing-img"
+              src="assets/appartment-1.jpg"
+              rel="image of appartment"
+            />
+            <div class="cards-content">
+              <h1 class="listing-price">80 000 ₾</h1>
+              <div class="listing-detail-box">
+                <ion-icon class="listing-icon" name="location"></ion-icon>
+                <p class="listing-detail">თბილისი ი.ჭავჭავაძის 53</p>
+              </div>
+              <div class="listing-description-container">
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="bed"></ion-icon>
+                  <p class="listing-detail">2</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="expand"></ion-icon>
+                  <p class="listing-detail">55მ</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="pin"></ion-icon>
+                  <p class="listing-detail">0160</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+          <figure class="listing-card">
+            <img
+              class="listing-img"
+              src="assets/appartment-1.jpg"
+              rel="image of appartment"
+            />
+            <div class="cards-content">
+              <h1 class="listing-price">80 000 ₾</h1>
+              <div class="listing-detail-box">
+                <ion-icon class="listing-icon" name="location"></ion-icon>
+                <p class="listing-detail">თბილისი ი.ჭავჭავაძის 53</p>
+              </div>
+              <div class="listing-description-container">
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="bed"></ion-icon>
+                  <p class="listing-detail">2</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="expand"></ion-icon>
+                  <p class="listing-detail">55მ</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="pin"></ion-icon>
+                  <p class="listing-detail">0160</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+          <figure class="listing-card">
+            <img
+              class="listing-img"
+              src="assets/appartment-1.jpg"
+              rel="image of appartment"
+            />
+            <div class="cards-content">
+              <h1 class="listing-price">80 000 ₾</h1>
+              <div class="listing-detail-box">
+                <ion-icon class="listing-icon" name="location"></ion-icon>
+                <p class="listing-detail">თბილისი ი.ჭავჭავაძის 53</p>
+              </div>
+              <div class="listing-description-container">
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="bed"></ion-icon>
+                  <p class="listing-detail">2</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="expand"></ion-icon>
+                  <p class="listing-detail">55მ</p>
+                </div>
+                <div class="listing-detail-box">
+                  <ion-icon class="listing-icon" name="pin"></ion-icon>
+                  <p class="listing-detail">0160</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
     </main>
     <script
       type="module"
