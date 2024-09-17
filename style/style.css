@@ -334,3 +334,15 @@ input[type="checkbox"] {
   backdrop-filter: blur(4px);
   z-index: 100;
 }
+/*////////////////////////////////////////*/
+/*  FORM VALIDATION  */
+.not-valid {
+  color: red;
+  border: 2px solid red;
+}
+.is-valid {
+  color: green;
+}
+.is-valid-input {
+  border: 2px solid red;
+}

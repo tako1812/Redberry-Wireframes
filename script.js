@@ -211,3 +211,21 @@ const closeWindow = function () {
 //
 btnAddAgent.addEventListener("click", openWindow);
 overlay.addEventListener("click", closeWindow);
+/*////////////////////////////////////////*/
+//  FORM VALIDATION
+//
+const addAgentBtn = document.querySelector(".add-agent-btn");
+const inputName = document.querySelector(".form-input-name");
+const inputLastName = document.querySelector(".form-input-lastName");
+//
+//
+const validInputs = (...inputs) => inputs.every((input) => input.length >= 2);
+const validWords = (...inputs) => inputs.length >= 5;
+//
+addAgentBtn.addEventListener("click", function (e) {
+  const name = inputName.value;
+  const lastName = inputLastName.value;
+  if (validInputs(name, lastName)) {
+  }
+});
+//

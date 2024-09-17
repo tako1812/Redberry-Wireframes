@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style/style.css" />
     <link rel="stylesheet" href="../style/add.listing.css" />
 
-    <script defer src="../script.js"></script>
+    <script defer src="../script/addListing.js"></script>
     <title>Wireframes</title>
   </head>
   <body>
@@ -56,14 +56,12 @@
               <div>
                 <label for="address">მისამართი* </label>
                 <input
-                  class="form-input-fullName"
+                  class="input-address"
                   id="address"
                   type="text"
                   required
                 />
-                <p class="valid-inputs">
-                  <span>&#10003;</span>მინიმუმ ორი სიმბოლო
-                </p>
+                <p class="valid-address">&#10003;მინიმუმ ორი სიმბოლო</p>
               </div>
               <div>
                 <label for="postcode">საფოსტო ინდექსი </label>
@@ -123,7 +121,9 @@
           </div>
           <div class="btns-container">
             <button class="btn btn-outline btn-secondary">გაუქმება</button>
-            <button class="btn btn-full btn-secondary">დაამატე აგენტი</button>
+            <button class="btn btn-full btn-secondary add-listing-btn">
+              დაამატე ლისტინგი
+            </button>
           </div>
         </form>
       </div>
