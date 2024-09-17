@@ -1,7 +1,13 @@
 "use strict";
 
 const filtersContainer = document.querySelector(".filters-container");
-const filteredCountainer = document.querySelector(".filtered-item");
+const filteredContainer = document.querySelector(".filtered-inputs");
+//
+const regionsContainer = document.querySelector(".regions-box");
+const minPriceInput = document.querySelector(".min-price-input");
+const maxPriceInput = document.querySelector(".max-price-input");
+const minAreaInput = document.querySelector(".min-area-input");
+const maxAreaInput = document.querySelector(".max-area-input");
 /*/////////////////////////////////*/
 //  add/remove filters containers
 //
@@ -10,14 +16,18 @@ filtersContainer.addEventListener("click", function (e) {
   document
     .querySelector(`.filter-content-${clicked.dataset.filter}`)
     .classList.toggle("hidden");
-  //1. toggle tu remove   2. roca erti gaxsnii maqvs da meore filtrs vaklikeb
 });
-/*/////////////////////////////////*/
+/*/////////////////////////////////////////////////*/
 //  Get Filters Inputs
 //
-const regionsContent = document.querySelector(".categories-box");
 let regions = [];
-regionsContent.addEventListener("click", function (e) {
+let minPrice = [];
+let maxPrice = 0;
+let minArea = 0;
+let maxArea = 0;
+
+const bedroomsAmount = [];
+regionsContainer.addEventListener("click", function (e) {
   document.querySelectorAll('[type="checkbox"]').forEach((item) => {
     if (item.checked === true) {
       regions.push(item.value);
@@ -26,36 +36,38 @@ regionsContent.addEventListener("click", function (e) {
 });
 //
 //
-const minPriceInput = document.querySelector(".min-price-input");
-const maxPriceInput = document.querySelector(".max-price-input");
-const minPrice = [];
-//
-//
+/*
 document.querySelectorAll(".minPrice-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".minPrice-categorie");
     minPriceInput.value = clicked.textContent;
-    minPrice.push(clicked.textContent);
+    minPrice = clicked.textContent;
+    console.log(minPrice);
   });
 });
 console.log(minPrice);
+*/
+
+document
+  .querySelector(".min-price-coutainer")
+  .addEventListener("click", function (e) {
+    const clicked = e.target.closest(".minPrice-categorie");
+    minPriceInput.value = clicked.textContent;
+    minPrice.push(Number(minPriceInput.value));
+  });
+console.log(minPrice);
+console.log(minPrice[0] > 0);
 //
 //
-const maxPrice = [];
+//
 document.querySelectorAll(".maxPrice-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".maxPrice-categorie");
     maxPriceInput.value = clicked.textContent;
-    maxPrice.push(clicked.textContent);
+    maxPrice = maxPriceInput.value;
   });
 });
-console.log(maxPrice);
 //
-//
-const minAreaInput = document.querySelector(".min-area-input");
-const maxAreaInput = document.querySelector(".max-area-input");
-
-const minArea = [];
 document.querySelectorAll(".minArea-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".minArea-categorie");
@@ -63,9 +75,7 @@ document.querySelectorAll(".minArea-categorie").forEach((item) => {
     minArea.push(minAreaInput.value);
   });
 });
-console.log(minArea);
 //
-const maxArea = [];
 document.querySelectorAll(".maxArea-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".maxArea-categorie");
@@ -73,9 +83,7 @@ document.querySelectorAll(".maxArea-categorie").forEach((item) => {
     maxArea.push(maxAreaInput.value);
   });
 });
-console.log(maxArea);
-/****************/
-const bedroomsAmount = [];
+//
 document
   .querySelector(".bedrooms-amount")
   .addEventListener("click", function (e) {
@@ -83,8 +91,9 @@ document
     console.log(clicked.textContent);
     bedroomsAmount.push(clicked.textContent);
   });
-console.log(bedroomsAmount);
-
+//
+//
+filteredContainer.innerHTML = "";
 filtersContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".btn-choose");
 
@@ -98,11 +107,19 @@ filtersContainer.addEventListener("click", function (e) {
     </div>`
   );
 
+  if (minPrice[0] > 0) {
+    html += `<div class="filtered-item">
+    <p>${minPrice[0] - maxPrice}</p>
+    <ion-icon class="close-icon" name="close-outline"></ion-icon>
+    </div>`;
+  }
+
+  /*
   html += `<div class="filtered-item">
         <p>${minPrice}-${maxPrice}</p>
         <ion-icon class="close-icon" name="close-outline"></ion-icon>
-        </div>`;
-  minPrice[0] = maxPrice[0] = "";
+        </div>`;*/
+  /*minPrice[0] = maxPrice[0] = "";*/
 
   /*
         minPrices.map(price =>  `
@@ -124,13 +141,13 @@ filtersContainer.addEventListener("click", function (e) {
             <ion-icon   class="close-icon" name="close-outline"></ion-icon>
         </div>`;
 
-  filteredCountainer.innerHTML = "";
-  filteredCountainer.insertAdjacentHTML("afterbegin", html);
+  filteredContainer.insertAdjacentHTML("afterbegin", html);
 });
-/*//////////////////////////////////////////*/
+/*////////////////////////////////////////*/
 //  Render Regions
 //
 const renderRegions = async function () {
+  regionsContainer.innerHTML = "";
   const res = await fetch(
     "https://api.real-estate-manager.redberryinternship.ge/api/regions"
   );
@@ -150,15 +167,17 @@ const renderRegions = async function () {
         <label for="region1"> ${data.name}</label>
       </div>
         `;
-    regionsContent.insertAdjacentHTML("afterbegin", html);
+    regionsContainer.insertAdjacentHTML("afterbegin", html);
   });
 };
 renderRegions();
-/*//////////////////////////////////////////*/
-//  Close filtered option
+/*/////////////////////////////////////////*/
+//  Close(X) filtered user inputs
 //
-const filteredContainer = document.querySelector(".filteredInputs-container");
-filteredContainer.addEventListener("click", function (e) {
+const filteredInputsContainer = document.querySelector(
+  ".filteredInputs-container"
+);
+filteredInputsContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".close-icon");
   if (!clicked) return;
 
@@ -166,15 +185,15 @@ filteredContainer.addEventListener("click", function (e) {
   filteredItem.remove();
 });
 
-/*//////////////////////////////////////////*/
+/*////////////////////////////////////////*/
 //  Clear button
 //
-const btnClear = document.querySelector(".btn-clear"); //შიგნით ხომ არ ჩავსვა?
+const btnClear = document.querySelector(".btn-clear");
 btnClear.addEventListener("click", function () {
   const filteredInputs = document.querySelector(".filtered-inputs");
   filteredInputs.remove();
 });
-/*//////////////////////////////////////////*/
+/*////////////////////////////////////////*/
 //  Add agent window functionality(open/close)
 //
 const btnAddAgent = document.querySelector(".btn-addAgent");

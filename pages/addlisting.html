@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/add.listing.css" />
+
+    <script defer src="../script.js"></script>
+    <title>Wireframes</title>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <img
+          class="logo container"
+          src="../assets/logo.png"
+          alt="Redberry Logo"
+        />
+        <div class="header-border"></div>
+      </div>
+    </header>
+    <main>
+      <div class="listing-container">
+        <h2 class="heading">ლისტინგის დამატება</h2>
+        <form class="cta-form-listing">
+          <div>
+            <h3 class="listings-title">გარიგების ტიპი</h3>
+            <div class="transactionType-container">
+              <div class="transactionType-box">
+                <div>
+                  <input
+                    type="radio"
+                    id="sell"
+                    name="transaction"
+                    value="sell"
+                  />
+                  <label for="sell">იყიდება</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="rent"
+                    name="transaction"
+                    value="rent"
+                  />
+                  <label for="rent">ქირავდება</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="listings-title">მდებარეობა</h3>
+            <div class="cta-form grid">
+              <div>
+                <label for="address">მისამართი* </label>
+                <input
+                  class="form-input-fullName"
+                  id="address"
+                  type="text"
+                  required
+                />
+                <p class="valid-inputs">
+                  <span>&#10003;</span>მინიმუმ ორი სიმბოლო
+                </p>
+              </div>
+              <div>
+                <label for="postcode">საფოსტო ინდექსი </label>
+                <input id="postcode" type="text" />
+                <p class="valid-inputs">&#10003; მხოლოდ რიცხვები</p>
+              </div>
+              <div>
+                <label for="select-region">რეგიონი </label>
+                <select id="select-region">
+                  <option value="კახეთი">კახეთი</option>
+                  <option value="კახეთი">ქართლი</option>
+                  <option value="კახეთი">იმერეთი</option>
+                  <option value="კახეთი">კახეთი</option>
+                </select>
+              </div>
+              <div>
+                <label for="select-city">ქალაქი </label>
+                <select id="select-city">
+                  <option value="კახეთი">თბილისი</option>
+                  <option value="კახეთი">ქართლი</option>
+                  <option value="კახეთი">იმერეთი</option>
+                  <option value="კახეთი">კახეთი</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="listings-title">ბინის დეტალები</h3>
+            <div class="cta-form grid">
+              <div>
+                <label for="price">ფასი* </label>
+                <input id="price" type="text" />
+                <p class="valid-inputs"><span>&#10003;</span>მხოლოდ რიცხვები</p>
+              </div>
+              <div>
+                <label for="area">ფართობი</label>
+                <input id="area" type="text" />
+                <p class="valid-inputs">&#10003; მხოლოდ რიცხვები</p>
+              </div>
+              <div>
+                <label for="bedroom-amount">საძინებლების რაოდენობა </label>
+                <input id="bedroom-amount" type="text" />
+                <p class="valid-inputs">&#10003; მხოლოდ რიცხვები</p>
+              </div>
+            </div>
+            <div class="img-description-container">
+              <div>
+                <label for="file-upload">ატვირთეთ ფოტო*</label>
+                <input type="file" id="file-upload" required />
+              </div>
+              <div>
+                <label for="listing-description">აღწერა* </label>
+                <input id="listing-description" type="text" required />
+                <p class="valid-char-title validations">მინიმუმ 5 სიტყვა</p>
+              </div>
+            </div>
+          </div>
+          <div class="btns-container">
+            <button class="btn btn-outline btn-secondary">გაუქმება</button>
+            <button class="btn btn-full btn-secondary">დაამატე აგენტი</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+.listing-container {
+  padding: 3rem 35rem;
+}
+.cta-form-listing {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.transactionType-container {
+  padding: 0 7rem 2rem;
+}
+.listings-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 1rem 6.5rem;
+}
+.transactionType-box {
+  display: flex;
+  gap: 6rem;
+}
+.transactionType-box label {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.transactionType-box input[type="radio"] {
+  transform: scale(1.2);
+}
+.cta-form select {
+  padding: 0.8rem 8rem;
+}
+.img-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 3rem 6.5rem;
+}
+.img-description-container label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.img-description-container input {
+  padding: 3rem 20rem;
+  border-radius: 3px;
+}
