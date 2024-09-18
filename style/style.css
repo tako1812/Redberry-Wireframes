@@ -23,6 +23,11 @@ body {
   justify-items: center;
   align-items: center;
 }
+.grid-1-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .container {
   max-width: 120rem;
   padding: 0 3.2rem;
@@ -338,7 +343,6 @@ input[type="checkbox"] {
 /*  FORM VALIDATION  */
 .not-valid {
   color: red;
-
 }
 .not-valid-input {
   border: 2px solid red;
@@ -347,5 +351,4 @@ input[type="checkbox"] {
   color: green;
 }
 .is-valid-input {
-  
 }

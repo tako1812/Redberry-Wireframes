@@ -25,7 +25,7 @@
       <div class="listing-container">
         <h2 class="heading">ლისტინგის დამატება</h2>
         <form class="cta-form-listing">
-          <div>
+          <div class="grid-1-cols">
             <h3 class="listings-title">გარიგების ტიპი</h3>
             <div class="transactionType-container">
               <div class="transactionType-box">
@@ -61,12 +61,16 @@
                   type="text"
                   required
                 />
-                <p class="valid-address valid-inputs">&#10003;მინიმუმ ორი სიმბოლო</p>
+                <p class="valid-address valid-inputs">
+                  &#10003;მინიმუმ ორი სიმბოლო
+                </p>
               </div>
               <div>
                 <label for="postcode">საფოსტო ინდექსი </label>
                 <input class="postcode" id="postcode" type="text" />
-                <p class="valid-postcode valid-inputs">&#10003; მხოლოდ რიცხვები</p>
+                <p class="valid-postcode valid-inputs">
+                  &#10003; მხოლოდ რიცხვები
+                </p>
               </div>
               <div>
                 <label for="select-region">რეგიონი </label>
@@ -103,25 +107,44 @@
               </div>
               <div>
                 <label for="bedroom-number">საძინებლების რაოდენობა </label>
-                <input class="bedrooms-number" id="bedroom-number" type="text" />
-                <p class="valid-bedrooms-number valid-inputs">&#10003; მხოლოდ რიცხვები</p>
+                <input
+                  class="bedrooms-number"
+                  id="bedroom-number"
+                  type="text"
+                />
+                <p class="valid-bedrooms-number valid-inputs">
+                  &#10003; მხოლოდ რიცხვები
+                </p>
               </div>
             </div>
             <div class="img-description-container">
-              <div>
-                <label for="file-upload">ატვირთეთ ფოტო*
+              <div class="grid-1-cols">
+                <label for="description">აღწერა* </label>
+                <input
+                  class="listing-description"
+                  id="description"
+                  type="text"
+                  required
+                />
+                <p class="valid-description valid-inputs">
+                  &#10003; მინიმუმ 5 სიტყვა
+                </p>
+              </div>
+              <div class="grid-1-cols">
+                <label for="file-upload"
+                  >ატვირთეთ ფოტო*
                   <div class="uploadImg-container">
                     <ion-icon name="add-circle-outline"></ion-icon>
                   </div>
                 </label>
                 <div>
-                  <input class="image-upload"type="file" id="file-upload" required />
+                  <input
+                    class="image-upload"
+                    type="file"
+                    id="file-upload"
+                    required
+                  />
                 </div>
-              </div>
-              <div>
-                <label for="description">აღწერა* </label>
-                <input class="listing-description" id="description" type="text" required />
-                <p class="valid-description valid-inputs">&#10003; მინიმუმ 5 სიტყვა</p>
               </div>
             </div>
           </div>
@@ -134,13 +157,13 @@
         </form>
       </div>
       <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
     </main>
   </body>
 </html>
