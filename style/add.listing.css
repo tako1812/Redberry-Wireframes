@@ -47,4 +47,13 @@
 }
 
 /*///////////////////////////////*/
-/* FORM VALIDATION*/
+/* UPLOAD IMAGE STYLING*/
+.image-upload {
+  display:none;
+  visibility: hidden;
+}
+.uploadImg-container {
+  width:20rem;
+  height:5rem;
+  background-color:rgb(41, 172, 172);
+}

@@ -338,11 +338,14 @@ input[type="checkbox"] {
 /*  FORM VALIDATION  */
 .not-valid {
   color: red;
+
+}
+.not-valid-input {
   border: 2px solid red;
 }
 .is-valid {
   color: green;
 }
 .is-valid-input {
-  border: 2px solid red;
+  
 }
