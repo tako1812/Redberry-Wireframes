@@ -387,7 +387,7 @@
       <div class="overlay hidden"></div>
       <div class="add-agent-window hidden">
         <h2 class="heading">აგენტის დამატება</h2>
-        <form class="cta-form">
+        <form class="cta-form cta-form-agent">
           <div class="personal-info-container grid">
             <div>
               <label for="first-name">სახელი* </label>
@@ -424,9 +424,21 @@
               <p class="valid-inputs"><span>&#10003;</span>მხოლოდ რიცხვები</p>
             </div>
           </div>
-          <div>
-            <label for="file-upload">ატვირთეთ ფოტო*</label>
-            <input type="file" id="file-upload" class="file-upload" required />
+          <div class="uploadImg-container-agent">
+            <label for="file-upload"
+              >ატვირთეთ ფოტო*
+              <div class="uploadImg-container">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </div>
+            </label>
+            <div>
+              <input
+                class="image-upload"
+                type="file"
+                id="file-upload"
+                required
+              />
+            </div>
           </div>
           <div class="btns-container">
             <button class="btn btn-outline btn-secondary">გაუქმება</button>

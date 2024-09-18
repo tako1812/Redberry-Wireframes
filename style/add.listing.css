@@ -45,19 +45,10 @@
   padding: 3rem 20rem;
   border-radius: 3px;
 }
-
-/*///////////////////////////////*/
-/* UPLOAD IMAGE STYLING*/
-.image-upload {
-  display: none;
-  visibility: hidden;
+.cta-form-agent {
+  padding: 0 6.5rem;
 }
-.uploadImg-container {
-  padding: 3rem 20rem;
-  border: 1px dashed #999;
-  border-radius: 3px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cta-form-agent select {
+  width: 40%;
+  padding: 1rem 1rem;
 }
