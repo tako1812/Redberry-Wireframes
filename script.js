@@ -212,7 +212,7 @@ const closeWindow = function () {
 btnAddAgent.addEventListener("click", openWindow);
 overlay.addEventListener("click", closeWindow);
 /*////////////////////////////////////////*/
-//  FORM VALIDATION
+//  AGENT FORM VALIDATION
 //
 const addAgentBtn = document.querySelector(".add-agent-btn");
 const inputName = document.querySelector(".form-input-name");
