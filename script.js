@@ -21,10 +21,12 @@ filtersContainer.addEventListener("click", function (e) {
 //  Get Filters Inputs
 //
 let regions = [];
-let minPrice = [];
+let minPrice = 0;
 let maxPrice = 0;
 let minArea = 0;
 let maxArea = 0;
+
+console.log(minPrice);
 
 const bedroomsAmount = [];
 regionsContainer.addEventListener("click", function (e) {
@@ -36,27 +38,15 @@ regionsContainer.addEventListener("click", function (e) {
 });
 //
 //
-/*
-document.querySelectorAll(".minPrice-categorie").forEach((item) => {
-  item.addEventListener("click", function (e) {
-    const clicked = e.target.closest(".minPrice-categorie");
-    minPriceInput.value = clicked.textContent;
-    minPrice = clicked.textContent;
-    console.log(minPrice);
-  });
-});
-console.log(minPrice);
-*/
-
 document
   .querySelector(".min-price-coutainer")
   .addEventListener("click", function (e) {
     const clicked = e.target.closest(".minPrice-categorie");
     minPriceInput.value = clicked.textContent;
-    minPrice.push(Number(minPriceInput.value));
+    minPrice = +minPriceInput.value;
+    console.log(minPrice);
   });
-console.log(minPrice);
-console.log(minPrice[0] > 0);
+
 //
 //
 //
@@ -64,7 +54,7 @@ document.querySelectorAll(".maxPrice-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".maxPrice-categorie");
     maxPriceInput.value = clicked.textContent;
-    maxPrice = maxPriceInput.value;
+    maxPrice = +maxPriceInput.value;
   });
 });
 //
@@ -72,15 +62,16 @@ document.querySelectorAll(".minArea-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".minArea-categorie");
     minAreaInput.value = clicked.textContent;
-    minArea.push(minAreaInput.value);
+    minArea.push(+minAreaInput.value);
   });
 });
+
 //
 document.querySelectorAll(".maxArea-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".maxArea-categorie");
     maxAreaInput.value = clicked.textContent;
-    maxArea.push(maxAreaInput.value);
+    maxArea.push(+maxAreaInput.value);
   });
 });
 //
@@ -107,9 +98,9 @@ filtersContainer.addEventListener("click", function (e) {
     </div>`
   );
 
-  if (minPrice[0] > 0) {
+  if (minPrice > 0 || maxPrice > 0) {
     html += `<div class="filtered-item">
-    <p>${minPrice[0] - maxPrice}</p>
+    <p>${minPrice} - ${maxPrice}</p>
     <ion-icon class="close-icon" name="close-outline"></ion-icon>
     </div>`;
   }

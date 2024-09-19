@@ -17,9 +17,9 @@ const bedroomsNumber = document.querySelector(".bedrooms-number");
 const regionsCountainer = document.querySelector(".regions-container");
 const citiesCountainer = document.querySelector(".cities-container");
 //
-const validInputs = (input) => input.length >= 2;
+//  Functions
+const validInputs = (input) => input.includes(" ");
 const requiredInput = (inputs) => inputs.trim() !== ""; //(a == null) !!!!!
-
 const validWordsNumber = (inputs) => inputs.split(" ").length > 5;
 const validNumber = (inputs) => Number.isFinite(inputs);
 //
@@ -31,13 +31,13 @@ const checkAddressValidation = function () {
 
   if (!validInputs(address)) validAddress.classList.add("not-valid");
 
-  /*
-  if (!validInputs(address) || !requiredInput(address)) {
+  /*if (!validInputs(address) || !requiredInput(address)) {
     inputAddress.classList.add("not-valid-input"); //!!!!
     validAddress.classList.add("not-valid");
   }*/
 };
 //
+
 const checkDescriptionValidation = function () {
   const description = listingDescription.value;
 
@@ -71,7 +71,6 @@ const checkNumberValidation = function () {
   if (validNumber(bedrooms)) validBedroomsNum.classList.add("is-valid");
   if (!validNumber(bedrooms)) validBedroomsNum.classList.add("not-valid");
 };
-
 addListingBtn.addEventListener("click", checkAddressValidation);
 addListingBtn.addEventListener("click", checkDescriptionValidation);
 addListingBtn.addEventListener("click", checkNumberValidation);
@@ -130,5 +129,25 @@ renderRegionsCities();
 /*////////////////////////////////////////*/
 //  UPLOAD LISTING
 //
-const addListingBtn = document.querySelector(".add-listing-btn");
-const uploadListing = function (e) {};
+const formContainer = document.querySelector(".cta-form-listing");
+
+//
+formContainer.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const dataArr = [...new FormData(formContainer)];
+  console.log(dataArr);
+  const data = Object.fromEntries(dataArr);
+  console.log(data);
+  //{rent: 'on', address: 'fff', postcode: 'fff', region: 'აფხაზეთი', city: 'კახეთი', …}
+});
+
+const uploadListing = async function (uploadData) {
+  const sendData = fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(uploadData),
+  });
+};

@@ -33,8 +33,7 @@
                   <input
                     type="radio"
                     id="sell"
-                    name="transaction"
-                    value="sell"
+                    name="sell"
                   />
                   <label for="sell">იყიდება</label>
                 </div>
@@ -42,8 +41,7 @@
                   <input
                     type="radio"
                     id="rent"
-                    name="transaction"
-                    value="rent"
+                    name="rent"
                   />
                   <label for="rent">ქირავდება</label>
                 </div>
@@ -59,6 +57,7 @@
                   class="input-address"
                   id="address"
                   type="text"
+                  name="address"
                   required
                 />
                 <p class="valid-address valid-inputs">
@@ -67,14 +66,14 @@
               </div>
               <div>
                 <label for="postcode">საფოსტო ინდექსი </label>
-                <input class="postcode" id="postcode" type="text" value=""/>
+                <input class="postcode" id="postcode" type="text" name="postcode"value=""/>
                 <p class="valid-postcode valid-inputs">
                   &#10003; მხოლოდ რიცხვები
                 </p>
               </div>
               <div ">
                 <label for="select-region">რეგიონი </label>
-                <select class="regions-container" id="select-region">
+                <select class="regions-container" name="region"id="select-region">
                   <option value="კახეთი">კახეთი</option>
                   <option value="კახეთი">ქართლი</option>
                   <option value="კახეთი">იმერეთი</option>
@@ -83,7 +82,7 @@
               </div>
               <div>
                 <label for="select-city">ქალაქი </label>
-                <select class="cities-container"id="select-city">
+                <select class="cities-container" name="city" id="select-city">
                   <option value="კახეთი">თბილისი</option>
                   <option value="კახეთი">ქართლი</option>
                   <option value="კახეთი">იმერეთი</option>
@@ -97,12 +96,12 @@
             <div class="cta-form grid">
               <div>
                 <label for="price">ფასი* </label>
-                <input class="listing-price" id="price" type="text" />
+                <input class="listing-price" id="price" name="price" type="text" />
                 <p class="valid-price valid-inputs">&#10003; მხოლოდ რიცხვები</p>
               </div>
               <div>
                 <label for="area">ფართობი</label>
-                <input class="listing-area" id="area" type="text" />
+                <input class="listing-area" id="area" name="area"type="text" />
                 <p class="valid-area valid-inputs">&#10003; მხოლოდ რიცხვები</p>
               </div>
               <div>
@@ -111,6 +110,7 @@
                   class="bedrooms-number"
                   id="bedroom-number"
                   type="text"
+                  name="bedrooms"
                 />
                 <p class="valid-bedrooms-number valid-inputs">
                   &#10003; მხოლოდ რიცხვები
@@ -124,6 +124,7 @@
                   class="listing-description"
                   id="description"
                   type="text"
+                  name="description"
                   required
                 />
                 <p class="valid-description valid-inputs">
@@ -142,6 +143,7 @@
                     class="image-upload"
                     type="file"
                     id="file-upload"
+                    name="image"
                     required
                   />
                 </div>
@@ -150,7 +152,7 @@
             <h3 class="listings-title">აგენტი</h3>
             <div class="cta-form cta-form-agent">
               <label for="select-agent">აგენტი </label>
-              <select id="select-agent">
+              <select id="select-agent" name="agent">
                 <option value="გიორგი ბრეგვაძე">გიორგი ბრეგვაძე</option>
                 <option value="გიორგი ბრეგვაძე">გიორგი ბრეგვაძე</option>
               </select>
@@ -158,7 +160,7 @@
           </div>
 
           <div class="btns-container">
-            <button class="btn btn-outline btn-secondary">გაუქმება</button>
+            <button type="submit" class="btn btn-outline btn-secondary">გაუქმება</button>
             <button type="submit" class="btn btn-full btn-secondary add-listing-btn">
               დაამატე ლისტინგი
             </button>
