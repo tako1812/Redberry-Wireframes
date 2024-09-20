@@ -205,18 +205,132 @@ overlay.addEventListener("click", closeWindow);
 /*////////////////////////////////////////*/
 //  AGENT FORM VALIDATION
 //
+const formAgent = document.querySelector('.cta-form-agent');
 const addAgentBtn = document.querySelector(".add-agent-btn");
-const inputName = document.querySelector(".form-input-name");
-const inputLastName = document.querySelector(".form-input-lastName");
+const inputName = document.querySelector('.form-input-name');
+const inputSurname= document.querySelector(".surname");
+const validName = document.querySelector(".valid-name");
+const validSurname = document.querySelector(".valid-surname");
+const inputPhoneNum = document.querySelector(".form-input-number");
+const validNumber = document.querySelector(".valid-number");
+const inputEmail = document.querySelector(".form-input-email");
+const validEmail = document.querySelector(".valid-email");
+//
+//   Functions
+const validSymbols = (input) => input.trim().length > 1;
+const requiredInput = (inputs) => inputs.trim() === ""; 
+const validNumbers = (inputs) => Number.isFinite(inputs);
+const validPhoneNum  = (input) => input.length === 9;
+const validPhoneStartInd = (input) => input.startsWith("5");
+const validEmailInputs = (input) => input.trim().includes("@"); 
+const validEmailEnd = (input) => input.trim().endsWith("@redberry.ge"); 
 //
 //
-const validInputs = (...inputs) => inputs.every((input) => input.length >= 2);
-const validWords = (...inputs) => inputs.length >= 5;
-//
-addAgentBtn.addEventListener("click", function (e) {
+const checkSymbolsName = function () {
   const name = inputName.value;
-  const lastName = inputLastName.value;
-  if (validInputs(name, lastName)) {
-  }
-});
+  //
+  if (validSymbols(name)) validName.classList.add("is-valid");
+  if (!validSymbols(name)) validName.classList.add("not-valid");
+  inputName.value = "";
+}
 //
+const checkSymbolsSurname = function () {
+  const surname = inputSurname.value;
+  //
+  if (validSymbols(surname )) validSurname.classList.add("is-valid");
+  if (!validSymbols(surname)) validSurname.classList.add("not-valid");
+  
+  //if (requiredInput(surname)) inputSurname.classList.add("not-valid-input");
+  inputSurname.value= "";
+};
+//
+const checkNumberValidation = function () {
+  const phoneNum = inputPhoneNum.value;
+
+  if (validNumbers(phoneNum)) validNumber.classList.add("is-valid");
+  if (validPhoneNum(phoneNum)) validNumber.classList.add("is-valid");
+  if (validPhoneStartInd(phoneNum)) validNumber.classList.add("is-valid");
+
+  //if ((!validPhoneNum(phoneNum))) validNumber.classList.add("not-valid");
+  
+  if (!validNumbers(phoneNum) || !validPhoneNum(phoneNum) || !validPhoneStartInd(phoneNum)) {
+   validNumber.classList.add("not-valid");
+  };
+  inputPhoneNum.value= "";
+    
+};
+const checkEmailValidation = function() {
+  const email = inputEmail.value;
+
+  if (validEmailInputs(email)) validEmail.classList.add("is-valid");
+  if (validEmailEnd(email)) validEmail.classList.add("is-valid");
+
+  if (!validEmailInputs(email)|| !validEmailEnd(email)) validEmail.classList.add("not-valid");
+
+  inputEmail.value = "";
+}
+//addAgentBtn.addEventListener("click", checkSymbolsName);
+//addAgentBtn.addEventListener("click", checkNumberValidation);
+//addAgentBtn.addEventListener("click", checkEmailValidation);*/
+//
+/*////////////////////////////////////////*/
+//  UPLOAD AGENT
+//
+formAgent.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const token ="9d0eaf47-5af0-4ec3-9820-f608e45749ce";
+  const userFile = document.getElementById('file-upload').files[0];
+/*
+  checkSymbolsSurname() 
+  checkSymbolsName();
+  checkNumberValidation();
+  checkEmailValidation();
+  console.log(inputName.value);*/
+
+  const formData = new FormData();
+
+  //const formData = Object.fromEntries(dataArr);
+
+  formData.append('name', inputName.value);
+  formData.append('surname', inputSurname.value);
+  formData.append('phone', inputPhoneNum.value);  
+  formData.append('email', inputEmail.value);
+  formData.append('avatar', userFile);
+  
+  console.log(inputName.value);
+  
+
+  fetch("https://api.real-estate-manager.redberryinternship.ge/api/agents", {
+      method: "POST",
+      headers: {
+         "Content-Type": "multipart/form-data",
+         Authorization:`Bearer ${token}`,
+         accept:"application/json",
+      },
+      body: formData,
+    }).then((response) => response.json()).then((res) => console.log(res));
+  
+  
+
+
+});
+
+
+/********************/
+/*
+const renderlistingCard = async function () {
+  
+  const res = await fetch(
+    "https://api.real-estate-manager.redberryinternship.ge/api/regions"
+  );
+  const datas = await res.json();
+  console.log(datas);
+
+  
+};
+renderlistingCard();
+
+*/
+
+
+

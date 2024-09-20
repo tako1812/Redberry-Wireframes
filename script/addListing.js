@@ -18,26 +18,22 @@ const regionsCountainer = document.querySelector(".regions-container");
 const citiesCountainer = document.querySelector(".cities-container");
 //
 //  Functions
-const validInputs = (input) => input.includes(" ");
-const requiredInput = (inputs) => inputs.trim() !== ""; //(a == null) !!!!!
-const validWordsNumber = (inputs) => inputs.split(" ").length > 5;
+const validSymbols = (input) => input.trim().length > 1;
+const requiredInput = (inputs) => inputs.trim() !== ""; 
+const validWordsNumber = (inputs) => inputs.trim().split(" ").length > 4;
 const validNumber = (inputs) => Number.isFinite(inputs);
 //
 //
 const checkAddressValidation = function () {
   const address = inputAddress.value;
 
-  if (validInputs(address)) validAddress.classList.add("is-valid");
+  if (validSymbols(address)) validAddress.classList.add("is-valid");
+  if (!validSymbols(address)) validAddress.classList.add("not-valid");
+  if (!requiredInput(address)) inputAddress.classList.add("not-valid-input"); 
 
-  if (!validInputs(address)) validAddress.classList.add("not-valid");
-
-  /*if (!validInputs(address) || !requiredInput(address)) {
-    inputAddress.classList.add("not-valid-input"); //!!!!
-    validAddress.classList.add("not-valid");
-  }*/
+    
 };
 //
-
 const checkDescriptionValidation = function () {
   const description = listingDescription.value;
 
@@ -71,17 +67,42 @@ const checkNumberValidation = function () {
   if (validNumber(bedrooms)) validBedroomsNum.classList.add("is-valid");
   if (!validNumber(bedrooms)) validBedroomsNum.classList.add("not-valid");
 };
+
+
+
+
 addListingBtn.addEventListener("click", checkAddressValidation);
 addListingBtn.addEventListener("click", checkDescriptionValidation);
 addListingBtn.addEventListener("click", checkNumberValidation);
 
 /*////////////////////////////////////////*/
 //  RENDER REGION/CITY DROPDOWN LIST
-//
-//  Get dropdown value
+// 
 let selectedValue = [];
+let dataRegions;
+let dataCities;
+//
+// get dropdown value // render cities
 const getSelectedValue = function () {
   selectedValue.push(regionsCountainer.value);
+
+  dataRegions.map((dataR) => {
+    if (dataR.name === selectedValue[0]) {
+      const cities = [];
+      dataCities.forEach(function (cityD) {
+        if (cityD.region_id === dataR.id) {
+          cities.push(cityD.name);
+        }
+      });
+      citiesCountainer.innerHTML = "";
+      const htmlC = cities.map(
+        (data) => `
+              <option value="${data}">${data}</option>
+            `
+      );
+      citiesCountainer.insertAdjacentHTML("afterbegin", htmlC);
+    }
+  });
 };
 regionsCountainer.addEventListener("change", getSelectedValue);
 //
@@ -93,6 +114,7 @@ const renderRegionsCities = async function () {
     "https://api.real-estate-manager.redberryinternship.ge/api/regions"
   );
   const regionsDatas = await res.json();
+  dataRegions = regionsDatas;
   regionsDatas.map((data) => {
     const html = `
           <option value="${data.name}">${data.name}</option>
@@ -105,6 +127,7 @@ const renderRegionsCities = async function () {
     "https://api.real-estate-manager.redberryinternship.ge/api/cities"
   );
   const citiesDatas = await response.json();
+  dataCities = citiesDatas;
 
   regionsDatas.map((dataR) => {
     if (dataR.name === selectedValue[0]) {
@@ -125,7 +148,6 @@ const renderRegionsCities = async function () {
   });
 };
 renderRegionsCities();
-
 /*////////////////////////////////////////*/
 //  UPLOAD LISTING
 //
@@ -136,13 +158,11 @@ formContainer.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const dataArr = [...new FormData(formContainer)];
-  console.log(dataArr);
-  const data = Object.fromEntries(dataArr);
-  console.log(data);
+  const formData = Object.fromEntries(dataArr);
   //{rent: 'on', address: 'fff', postcode: 'fff', region: 'აფხაზეთი', city: 'კახეთი', …}
 });
 
-const uploadListing = async function (uploadData) {
+const uploadListing = async function (formData) {
   const sendData = fetch(url, {
     method: "POST",
     headers: {

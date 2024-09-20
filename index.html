@@ -395,33 +395,35 @@
                 class="form-input-name"
                 id="first-name"
                 type="text"
+                name="name"
                 required
               />
-              <p class="valid-inputs">
-                <span>&#10003;</span>მინიმუმ ორი სიმბოლო
+              <p class="valid-name">
+                &#10003;მინიმუმ ორი სიმბოლო
               </p>
             </div>
             <div>
-              <label for="last-name">გვარი </label>
-              <input class="form-input-lastName" id="last-name" type="text" />
-              <p class="valid-inputs">&#10003; მინიმუმ ორი სიმბოლო</p>
+              <label for="surname">გვარი </label>
+              <input class="surname" id="surname"  name="surname"type="text" />
+              <p class="valid-surname">&#10003; მინიმუმ ორი სიმბოლო</p>
             </div>
             <div>
               <label for="email">ელ.ფოსტა* </label>
               <input
-                class="form-input-fullName"
+                class="form-input-email"
                 id="email"
                 type="email"
+                name="email"
                 required
               />
-              <p class="valid-inputs">
-                <span>&#10003;</span> გამოიყენეთ @redberry.ge ფოსტა
+              <p class="valid-email">
+                &#10003;გამოიყენეთ @redberry.ge ფოსტა
               </p>
             </div>
             <div>
               <label for="phone">ტელეფონის ნომერი* </label>
-              <input class="form-input-fullName" id="phone" type="tel" />
-              <p class="valid-inputs"><span>&#10003;</span>მხოლოდ რიცხვები</p>
+              <input class="form-input-number" id="phone" name="phone"type="tel" />
+              <p class="valid-number">&#10003;მხოლოდ რიცხვები</p>
             </div>
           </div>
           <div class="uploadImg-container-agent">
@@ -436,7 +438,8 @@
                 class="image-upload"
                 type="file"
                 id="file-upload"
-                required
+                name="avatar"
+                accept=".jpg, .png"
               />
             </div>
           </div>

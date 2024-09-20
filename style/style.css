@@ -372,10 +372,8 @@ input[type="checkbox"] {
   color: red;
 }
 .not-valid-input {
-  border-color: #ff0000;
+  border:1px solid #ff0000;
 }
 .is-valid {
   color: green;
-}
-.is-valid-input {
 }
