@@ -15,11 +15,12 @@ body {
   line-height: 1;
   font-weight: 400;
   color: #333;
+  background-color:#fff;
 }
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 2rem;
+  gap: 3rem;
   justify-items: center;
   align-items: center;
 }
@@ -27,7 +28,11 @@ body {
   display: grid;
   grid-template-columns: 1fr;
 }
-
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .container {
   max-width: 120rem;
   padding: 0 3.2rem;
@@ -272,10 +277,7 @@ input[type="checkbox"] {
   font-size: 3rem;
   font-weight: 700;
 }
-.listing-detail {
-  font-size: 1.8rem;
-}
-.listing-icon {
+.listing-details {
   font-size: 1.8rem;
 }
 /*//////////////////*/

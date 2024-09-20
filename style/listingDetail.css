@@ -1,0 +1,83 @@
+
+
+.description-container {
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+}
+.listing-description {
+    padding-top:2rem;
+    justify-self: start;
+}
+.details-container {
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+}
+.agent-peronalInfo {
+    display:flex;
+    align-items:center;
+    gap:1rem;
+   
+    
+}
+.agent-contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap:0.7rem;
+
+}
+.agent-container {
+    width:33rem;
+    height:14rem;
+    border:1px solid #eeeeee;
+    border-radius:9px;
+    padding:1rem;
+    
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+}
+.agent-image {
+    width:6.5rem;
+    border-radius: 50%;
+
+}
+.img-detailed{
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.listing-price {
+    font-size: 2.5rem;
+    margin-bottom: 0.7rem;
+}
+.listing-details {
+    font-size: 1.5rem;
+    color:#808080;
+}
+.listing-details-text{
+    font-size:1.3rem;
+    color:#808080;
+    text-align: left;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+}
+.listing-details-name {
+    font-size:1.4rem;
+    color:#666;
+    margin-bottom: 0.5rem;
+}
+.transaction-tag {
+    padding:0.6rem 1.2rem;
+    font-size:1rem;
+    font-weight: 700;
+    color:#fff;
+    background-color: #666;
+    border-radius: 42%;
+
+    position:absolute;
+    top:20%;
+    left:7%;
+
+}
