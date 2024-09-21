@@ -185,6 +185,17 @@ btnClear.addEventListener("click", function () {
   filteredInputs.remove();
 });
 /*////////////////////////////////////////*/
+//  Open Listing Page
+//
+const btnAddListing = document.querySelector('.btn-addListing');
+const openPage = document.location.href=".//pages/addlisting.html";
+btnAddListing.addEventListener('click', openPage);
+
+/*btnAddListing.addEventListener('click', function() {
+  document.location.href=".//pages/addlisting.html";
+});*/
+
+/*////////////////////////////////////////*/
 //  Add agent window functionality(open/close)
 //
 const btnAddAgent = document.querySelector(".btn-addAgent");
@@ -222,7 +233,7 @@ const requiredInput = (inputs) => inputs.trim() === "";
 const validNumbers = (inputs) => Number.isFinite(inputs);
 const validPhoneNum  = (input) => input.length === 9;
 const validPhoneStartInd = (input) => input.startsWith("5");
-const validEmailInputs = (input) => input.trim().includes("@"); 
+//const validEmailInputs = (input) => input.trim().includes("@"); 
 const validEmailEnd = (input) => input.trim().endsWith("@redberry.ge"); 
 //
 //
@@ -262,12 +273,13 @@ const checkNumberValidation = function () {
 const checkEmailValidation = function() {
   const email = inputEmail.value;
 
-  if (validEmailInputs(email)) validEmail.classList.add("is-valid");
   if (validEmailEnd(email)) validEmail.classList.add("is-valid");
 
-  if (!validEmailInputs(email)|| !validEmailEnd(email)) validEmail.classList.add("not-valid");
-
-  inputEmail.value = "";
+  if (!validEmailEnd(email)) {
+    validEmail.classList.add("not-valid");
+    return false;
+  } 
+  return true;
 }
 //addAgentBtn.addEventListener("click", checkSymbolsName);
 //addAgentBtn.addEventListener("click", checkNumberValidation);
@@ -280,13 +292,15 @@ formAgent.addEventListener("submit", function(e) {
   e.preventDefault();
   const token ="9d0eaf47-5af0-4ec3-9820-f608e45749ce";
   const userFile = document.getElementById('file-upload').files[0];
-/*
-  checkSymbolsSurname() 
+
+  /*checkSymbolsSurname() 
   checkSymbolsName();
   checkNumberValidation();
   checkEmailValidation();
   console.log(inputName.value);*/
 
+  const emailIsValid = checkEmailValidation();
+  if(!emailIsValid) return;
   const formData = new FormData();
 
   //const formData = Object.fromEntries(dataArr);
@@ -303,7 +317,6 @@ formAgent.addEventListener("submit", function(e) {
   fetch("https://api.real-estate-manager.redberryinternship.ge/api/agents", {
       method: "POST",
       headers: {
-         "Content-Type": "multipart/form-data",
          Authorization:`Bearer ${token}`,
          accept:"application/json",
       },
@@ -317,20 +330,25 @@ formAgent.addEventListener("submit", function(e) {
 
 
 /********************/
-/*
-const renderlistingCard = async function () {
+
+const rend = async function () {
+  const token ="9d0eaf47-5af0-4ec3-9820-f608e45749ce";
   
   const res = await fetch(
-    "https://api.real-estate-manager.redberryinternship.ge/api/regions"
-  );
+    "https://api.real-estate-manager.redberryinternship.ge/api/agents"
+  ,{
+    method: "GET",
+    headers: {
+        Authorization:`Bearer ${token}`,
+         accept:"application/json",
+      },
+    }
+  )
   const datas = await res.json();
   console.log(datas);
-
-  
 };
-renderlistingCard();
+rend();
 
-*/
 
 
 

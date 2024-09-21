@@ -1,4 +1,17 @@
-
+.section-listing-detailed{
+    padding: 4rem 0;
+}
+.arrow-icon {
+    font-size: 2rem;
+    position:absolute;
+    top:12%;
+    left:4%;
+   
+}
+.listing-detailed-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
 
 .description-container {
     display:flex;
@@ -8,6 +21,11 @@
 .listing-description {
     padding-top:2rem;
     justify-self: start;
+    
+}
+.image-box {
+    align-content: center;
+    justify-content:center;
 }
 .details-container {
     display:flex;
@@ -18,8 +36,7 @@
     display:flex;
     align-items:center;
     gap:1rem;
-   
-    
+
 }
 .agent-contactInfo {
     display: flex;
@@ -44,7 +61,7 @@
 
 }
 .img-detailed{
-  width: 100%;
+  width: 80%;
   border-radius: 12px;
   object-fit: cover;
 }
@@ -80,4 +97,22 @@
     top:20%;
     left:7%;
 
+}
+.delete-listing-btn {
+    font-size:0.9rem;
+    color:#808080;
+    font-weight:600;
+    border:2px solid #808080;
+    align-self: flex-start;
+    padding:0.6rem 1.2rem;
+}
+.delete-listing-btn:hover,
+.delete-listing-btn:active {
+    background-color: #808080;
+    color: #fff;
+
+}
+.section-listing-options {
+    padding: 5rem 0;
+    position: relative;
 }
