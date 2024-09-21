@@ -8,13 +8,16 @@ const minPriceInput = document.querySelector(".min-price-input");
 const maxPriceInput = document.querySelector(".max-price-input");
 const minAreaInput = document.querySelector(".min-area-input");
 const maxAreaInput = document.querySelector(".max-area-input");
+let listings =[];
 /*/////////////////////////////////*/
 //  add/remove filters containers
 //
 filtersContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".btn-filter");
+  if(!clicked)return;
+  const data = clicked.getAttribute('data-filter');
   document
-    .querySelector(`.filter-content-${clicked.dataset.filter}`)
+    .querySelector(`.filter-content-${data}`)
     .classList.toggle("hidden");
 });
 /*/////////////////////////////////////////////////*/
@@ -25,13 +28,11 @@ let minPrice = 0;
 let maxPrice = 0;
 let minArea = 0;
 let maxArea = 0;
-
-console.log(minPrice);
-
-const bedroomsAmount = [];
+let bedroomsAmount = [];
+//
 regionsContainer.addEventListener("click", function (e) {
   document.querySelectorAll('[type="checkbox"]').forEach((item) => {
-    if (item.checked === true) {
+    if (item.checked === true && !regions.includes(item.value)) {
       regions.push(item.value);
     }
   });
@@ -43,37 +44,41 @@ document
   .addEventListener("click", function (e) {
     const clicked = e.target.closest(".minPrice-categorie");
     minPriceInput.value = clicked.textContent;
-    minPrice = +minPriceInput.value;
-    console.log(minPrice);
+    const price1 = clicked.getAttribute("dataset");
+    minPrice = +price1;
+    
   });
-
-//
 //
 //
 document.querySelectorAll(".maxPrice-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".maxPrice-categorie");
     maxPriceInput.value = clicked.textContent;
-    maxPrice = +maxPriceInput.value;
+    const price2 = clicked.getAttribute("dataset");
+    maxPrice = +price2;
   });
 });
+//
 //
 document.querySelectorAll(".minArea-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".minArea-categorie");
     minAreaInput.value = clicked.textContent;
-    minArea.push(+minAreaInput.value);
+    const area1 = clicked.getAttribute("dataset");
+    minArea = +area1; 
   });
 });
-
+//
 //
 document.querySelectorAll(".maxArea-categorie").forEach((item) => {
   item.addEventListener("click", function (e) {
     const clicked = e.target.closest(".maxArea-categorie");
     maxAreaInput.value = clicked.textContent;
-    maxArea.push(+maxAreaInput.value);
+    const area2 = clicked.getAttribute("dataset");
+    maxArea = +area2; 
   });
 });
+//
 //
 document
   .querySelector(".bedrooms-amount")
@@ -84,12 +89,56 @@ document
   });
 //
 //
-filteredContainer.innerHTML = "";
+const filterListing = function() {
+  const filterData = listings.filter(listing => {
+      const regionMatch = regions.length === 0 || regions.includes(listing.city.region.name); 
+      const priceMatch = (!minPrice || listing.price >= minPrice) && (!maxPrice || listing.price <= maxPrice); 
+      const areaMatch = (!minArea || listing.area >= minArea) && (!maxArea || listing.area <= maxArea);  
+      const bedroomMatch = bedroomsAmount.length === 0 || bedrooms.includes(listing.bedrooms);  
+      return regionMatch && priceMatch && areaMatch && bedroomMatch; 
+    });
+
+  listingsContainer.innerHTML = "";
+  filterData.map((data) => { 
+    const html =`
+    <figure class="listing-card">
+      <img
+        class="listing-img"
+        src="${data.image}"
+        rel="image of appartment"
+      />
+      <div class="cards-content">
+        <h1 class="listing-price">${data.price}</h1>
+        <div class="flex">
+          <ion-icon class="listing-details" name="location"></ion-icon>
+          <p class="listing-details">${data.city.name} ${data.address}</p>
+        </div>
+        <div class="listing-description-container">
+          <div class="flex">
+            <ion-icon class="listing-details" name="bed"></ion-icon>
+            <p class="listing-details">${data.bedrooms}</p>
+          </div>
+          <div class="flex">
+            <ion-icon class="listing-details" name="expand"></ion-icon>
+            <p class="listing-details">${data.area}მ</p>
+          </div>
+          <div class="flex">
+            <ion-icon class="listing-details" name="pin"></ion-icon>
+            <p class="listing-details">${data.zip_code}</p>
+          </div>
+        </div>
+      </div>
+    </figure>`;
+    listingsContainer.innerHTML += html;
+  });
+};
+
+filteredContainer.innerHTML="";
 filtersContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".btn-choose");
-
   if (!clicked) return;
 
+  console.log(regions);
   let html = regions.map(
     (region) => `
     <div class="filtered-item">
@@ -97,42 +146,35 @@ filtersContainer.addEventListener("click", function (e) {
         <ion-icon  class="close-icon" name="close-outline"></ion-icon>
     </div>`
   );
+  if(html)btnClear.classList.remove('hidden');
 
   if (minPrice > 0 || maxPrice > 0) {
     html += `<div class="filtered-item">
     <p>${minPrice} - ${maxPrice}</p>
     <ion-icon class="close-icon" name="close-outline"></ion-icon>
     </div>`;
+    btnClear.classList.remove('hidden');
   }
 
-  /*
-  html += `<div class="filtered-item">
-        <p>${minPrice}-${maxPrice}</p>
-        <ion-icon class="close-icon" name="close-outline"></ion-icon>
-        </div>`;*/
-  /*minPrice[0] = maxPrice[0] = "";*/
+  if (minArea > 0 || maxArea > 0)  {
+    html += ` <div class="filtered-item">
+             <p>${minArea}-${maxArea}</p>
+             <ion-icon class="close-icon" name="close-outline"></ion-icon>
+             </div>`;
+             btnClear.classList.remove('hidden');
+  }
 
-  /*
-        minPrices.map(price =>  `
-        <div class="filtered-item">
-            <p>${price}-1000 000</p>
-            <ion-icon   class="close-icon" name="close-outline"></ion-icon>
-            </div>`);
-            maxPrice.map(price => 
-            <p>100000-${price}</p>`);*/
+  if (bedroomsAmount.length > 0) {
+    html += `
+          <div class="filtered-item">
+              <p>${bedroomsAmount}</p>
+              <ion-icon   class="close-icon" name="close-outline"></ion-icon>
+          </div>`;
+          btnClear.classList.remove('hidden');
+  }
+  filteredContainer.innerHTML = html;
+  filterListing();
 
-  html += ` <div class="filtered-item">
-           <p>${minArea}-${maxArea}</p>
-           <ion-icon class="close-icon" name="close-outline"></ion-icon>
-           </div>`;
-
-  html += `
-        <div class="filtered-item">
-            <p>${bedroomsAmount}</p>
-            <ion-icon   class="close-icon" name="close-outline"></ion-icon>
-        </div>`;
-
-  filteredContainer.insertAdjacentHTML("afterbegin", html);
 });
 /*////////////////////////////////////////*/
 //  Render Regions
@@ -182,18 +224,30 @@ filteredInputsContainer.addEventListener("click", function (e) {
 const btnClear = document.querySelector(".btn-clear");
 btnClear.addEventListener("click", function () {
   const filteredInputs = document.querySelector(".filtered-inputs");
-  filteredInputs.remove();
+  //filteredInputs.remove();
+  filteredContainer.innerHTML = "";
+  regions = [];
+  minPrice = 0;
+  maxPrice = 0;
+  minArea = 0;
+  maxArea = 0;
+  bedroomsAmount = [];
+  filterListing();
+  btnClear.classList.add('hidden');
+
+  document.querySelectorAll('[type="checkbox"]').forEach((item) => {
+    item.checked = false;
+  });
+
 });
 /*////////////////////////////////////////*/
 //  Open Listing Page
 //
 const btnAddListing = document.querySelector('.btn-addListing');
-const openPage = document.location.href=".//pages/addlisting.html";
-btnAddListing.addEventListener('click', openPage);
 
-/*btnAddListing.addEventListener('click', function() {
-  document.location.href=".//pages/addlisting.html";
-});*/
+btnAddListing.addEventListener('click', function() {
+  window.location.href="../pages/addlisting.html";
+});
 
 /*////////////////////////////////////////*/
 //  Add agent window functionality(open/close)
@@ -242,7 +296,7 @@ const checkSymbolsName = function () {
   //
   if (validSymbols(name)) validName.classList.add("is-valid");
   if (!validSymbols(name)) validName.classList.add("not-valid");
-  inputName.value = "";
+  
 }
 //
 const checkSymbolsSurname = function () {
@@ -252,7 +306,7 @@ const checkSymbolsSurname = function () {
   if (!validSymbols(surname)) validSurname.classList.add("not-valid");
   
   //if (requiredInput(surname)) inputSurname.classList.add("not-valid-input");
-  inputSurname.value= "";
+  
 };
 //
 const checkNumberValidation = function () {
@@ -267,8 +321,6 @@ const checkNumberValidation = function () {
   if (!validNumbers(phoneNum) || !validPhoneNum(phoneNum) || !validPhoneStartInd(phoneNum)) {
    validNumber.classList.add("not-valid");
   };
-  inputPhoneNum.value= "";
-    
 };
 const checkEmailValidation = function() {
   const email = inputEmail.value;
@@ -281,39 +333,29 @@ const checkEmailValidation = function() {
   } 
   return true;
 }
-//addAgentBtn.addEventListener("click", checkSymbolsName);
-//addAgentBtn.addEventListener("click", checkNumberValidation);
-//addAgentBtn.addEventListener("click", checkEmailValidation);*/
 //
 /*////////////////////////////////////////*/
 //  UPLOAD AGENT
 //
 formAgent.addEventListener("submit", function(e) {
   e.preventDefault();
-  const token ="9d0eaf47-5af0-4ec3-9820-f608e45749ce";
+  const token ="9d109274-ed65-48e6-a843-284dc8f78e83";
   const userFile = document.getElementById('file-upload').files[0];
 
-  /*checkSymbolsSurname() 
-  checkSymbolsName();
-  checkNumberValidation();
-  checkEmailValidation();
-  console.log(inputName.value);*/
-
+  const nameValid = checkSymbolsName();
+  const surnameValid = checkSymbolsSurname();
+  const phoneValid = checkNumberValidation();
   const emailIsValid = checkEmailValidation();
-  if(!emailIsValid) return;
+
+  if((!nameValid) && (!surnameValid) && (!phoneValid) && (!emailIsValid)) return;
+
   const formData = new FormData();
-
-  //const formData = Object.fromEntries(dataArr);
-
   formData.append('name', inputName.value);
   formData.append('surname', inputSurname.value);
   formData.append('phone', inputPhoneNum.value);  
   formData.append('email', inputEmail.value);
   formData.append('avatar', userFile);
   
-  console.log(inputName.value);
-  
-
   fetch("https://api.real-estate-manager.redberryinternship.ge/api/agents", {
       method: "POST",
       headers: {
@@ -322,20 +364,16 @@ formAgent.addEventListener("submit", function(e) {
       },
       body: formData,
     }).then((response) => response.json()).then((res) => console.log(res));
-  
-  
-
-
 });
-
-
-/********************/
-
-const rend = async function () {
-  const token ="9d0eaf47-5af0-4ec3-9820-f608e45749ce";
+/*////////////////////////////////////////*/
+//  create listing card
+//
+const listingsContainer = document.querySelector(".listings-container");
+const createListingCard = async function () {
+  const token ="9d109274-ed65-48e6-a843-284dc8f78e83";
   
   const res = await fetch(
-    "https://api.real-estate-manager.redberryinternship.ge/api/agents"
+    "https://api.real-estate-manager.redberryinternship.ge/api/real-estates"
   ,{
     method: "GET",
     headers: {
@@ -345,10 +383,49 @@ const rend = async function () {
     }
   )
   const datas = await res.json();
-  console.log(datas);
-};
-rend();
+  listings = datas;
+  
+  datas.map((data) => { 
+    const html =`
+    <figure class="listing-card" dataset = "${data.id}">
+      <img
+        class="listing-img"
+        src="${data.image}"
+        rel="image of appartment"
+      />
+      <div class="cards-content">
+        <h1 class="listing-price">${data.price}</h1>
+        <div class="flex">
+          <ion-icon class="listing-details" name="location"></ion-icon>
+          <p class="listing-details">${data.city.name} ${data.address}</p>
+        </div>
+        <div class="listing-description-container">
+          <div class="flex">
+            <ion-icon class="listing-details" name="bed"></ion-icon>
+            <p class="listing-details">${data.bedrooms}</p>
+          </div>
+          <div class="flex">
+            <ion-icon class="listing-details" name="expand"></ion-icon>
+            <p class="listing-details">${data.area}მ</p>
+          </div>
+          <div class="flex">
+            <ion-icon class="listing-details" name="pin"></ion-icon>
+            <p class="listing-details">${data.zip_code}</p>
+          </div>
+        </div>
+      </div>
+    </figure>`;
+    listingsContainer.innerHTML += html;
+    const cards = document.querySelectorAll('.listing-card');
+    cards.forEach(card => card.addEventListener("click", function() {
+        window.location.href = "./pages/listingDetailed.html";
+        const pageId = card.getAttribute('dataset');
+        localStorage.setItem("page-id",pageId);
 
+    }));
+  });
+};
+createListingCard();
 
 
 

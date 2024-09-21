@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style/style.css" />
     <link rel="stylesheet" href="../style/add.listing.css" />
 
+    <!--<script defer src="../script.js"></script>-->
     <script defer src="../script/addListing.js"></script>
     <title>Wireframes</title>
   </head>
@@ -31,6 +32,7 @@
               <div class="transactionType-box">
                 <div>
                   <input
+                  const="ratio"
                     type="radio"
                     id="sell"
                     name="sell"
@@ -39,6 +41,7 @@
                 </div>
                 <div>
                   <input
+                  const="ratio"
                     type="radio"
                     id="rent"
                     name="rent"
@@ -58,7 +61,6 @@
                   id="address"
                   type="text"
                   name="address"
-                  required
                 />
                 <p class="valid-address valid-inputs">
                   &#10003;მინიმუმ ორი სიმბოლო
@@ -120,13 +122,9 @@
             <div class="img-description-container">
               <div class="grid-1-cols">
                 <label for="description">აღწერა* </label>
-                <input
-                  class="listing-description"
-                  id="description"
-                  type="text"
-                  name="description"
-                  required
-                />
+                <textarea class="listing-description"  cols="5" rows="10">
+
+                </textarea>
                 <p class="valid-description valid-inputs">
                   &#10003; მინიმუმ 5 სიტყვა
                 </p>
@@ -144,7 +142,6 @@
                     type="file"
                     id="file-upload"
                     name="image"
-                    required
                   />
                 </div>
               </div>
@@ -153,8 +150,6 @@
             <div class="cta-form cta-form-agent">
               <label for="select-agent">აგენტი </label>
               <select id="select-agent" name="agent">
-                <option value="გიორგი ბრეგვაძე">გიორგი ბრეგვაძე</option>
-                <option value="გიორგი ბრეგვაძე">გიორგი ბრეგვაძე</option>
               </select>
             </div>
           </div>

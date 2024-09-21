@@ -37,35 +37,6 @@
               <div class="regions-box">
                 <div class="input-label-container">
                   <input
-                    class="checkbox"
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> ქართლი</label>
-                </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> კახეთი</label>
-                </div>
-                <div class="input-label-container">
-                  <input
-                    type="checkbox"
-                    id="region1"
-                    name="region1"
-                    value="ქართლი"
-                  />
-                  <label for="region1"> გურია</label>
-                </div>
-
-                <div class="input-label-container">
-                  <input
                     type="checkbox"
                     id="region1"
                     name="region1"
@@ -137,23 +108,23 @@
                 <div>
                   <div class="heading-filter">მინ.ფასი</div>
                   <ul class="min-price-coutainer">
-                    <li class="minPrice-categorie">50,000</li>
-                    <li class="minPrice-categorie">100,000</li>
-                    <li class="minPrice-categorie">150,000₾</li>
-                    <li class="minPrice-categorie">200,000₾</li>
-                    <li class="minPrice-categorie">250,000₾</li>
-                    <li class="minPrice-categorie">300,000₾</li>
+                    <li class="minPrice-categorie" dataset="50000">50,000</li>
+                    <li class="minPrice-categorie"dataset="100000">100,000</li>
+                    <li class="minPrice-categorie"dataset="150000">150,000₾</li>
+                    <li class="minPrice-categorie" dataset="200000">200,000₾</li>
+                    <li class="minPrice-categorie"dataset="250000">250,000₾</li>
+                    <li class="minPrice-categorie"dataset="300000">300,000₾</li>
                   </ul>
                 </div>
                 <div>
                   <div class="heading-filter">მაქს.ფასი</div>
                   <ul>
-                    <li class="maxPrice-categorie">50,000</li>
-                    <li class="maxPrice-categorie">100,000</li>
-                    <li class="maxPrice-categorie">150,000₾</li>
-                    <li class="maxPrice-categorie">200,000₾</li>
-                    <li class="maxPrice-categorie">250,000₾</li>
-                    <li class="maxPrice-categorie">300,000₾</li>
+                    <li class="maxPrice-categorie"dataset="50000">50,000</li>
+                    <li class="maxPrice-categorie"dataset="100000">100,000</li>
+                    <li class="maxPrice-categorie"dataset="150000">150,000₾</li>
+                    <li class="maxPrice-categorie"dataset="200000">200,000₾</li>
+                    <li class="maxPrice-categorie"dataset="250000">250,000₾</li>
+                    <li class="maxPrice-categorie"dataset="300000">300,000₾</li>
                   </ul>
                 </div>
               </div>
@@ -180,35 +151,35 @@
                 <input
                   class="min-area-input"
                   type="text"
-                  placeholder="დან      მ&sup"
+                  placeholder="დან      მ.კვ"
                 />
                 <input
                   class="max-area-input"
                   type="text"
-                  placeholder="დან      მ&sup"
+                  placeholder="დან      მ.კვ"
                 />
               </div>
               <div class="price-box">
                 <div>
                   <div class="heading-filter">მინ.მ</div>
                   <ul>
-                    <li class="minArea-categorie">50,000მ&sup</li>
-                    <li class="minArea-categorie">100,000მ&sup</li>
-                    <li class="minArea-categorie">150,000მ&sup</li>
-                    <li class="minArea-categorie">200,000მ&sup</li>
-                    <li class="minArea-categorie">250,000მ&sup</li>
-                    <li class="minArea-categorie">300,000მ&sup</li>
+                    <li class="minArea-categorie"dataset="50">50მ</li>
+                    <li class="minArea-categorie"dataset="100">100მ</li>
+                    <li class="minArea-categorie"dataset="200">150მ</li>
+                    <li class="minArea-categorie"dataset="300">200მ</li>
+                    <li class="minArea-categorie"dataset="400">250მ</li>
+                    <li class="minArea-categorie"dataset="500">300მ</li>
                   </ul>
                 </div>
                 <div>
                   <div class="heading-filter">მაქს.მ</div>
                   <ul>
-                    <li class="maxArea-categorie">50,000მ&sup</li>
-                    <li class="maxArea-categorie">100,000მ&sup</li>
-                    <li class="maxArea-categorie">150,000მ&sup</li>
-                    <li class="maxArea-categorie">200,000მ&sup</li>
-                    <li class="maxArea-categorie">250,000მ&sup</li>
-                    <li class="maxArea-categorie">300,000მ&sup</li>
+                    <li class="maxArea-categorie"dataset="50">50მ</li>
+                    <li class="maxArea-categorie"dataset="100">100მ</li>
+                    <li class="maxArea-categorie"dataset="200">150მ</li>
+                    <li class="maxArea-categorie"dataset="300">200მ</li>
+                    <li class="maxArea-categorie"dataset="400">250მ</li>
+                    <li class="maxArea-categorie"dataset="500">300მ</li>
                   </ul>
                 </div>
               </div>
@@ -266,122 +237,10 @@
             <ion-icon class="close-icon" name="close-outline"></ion-icon>
           </div>
         </div>
-        <button type="submit" class="btn btn-clear">გასუფთავება</button>
+        <button type="submit" class="btn btn-clear hidden">გასუფთავება</button>
       </div>
       <section class="listings-section">
         <div class="listings-container">
-          <figure class="listing-card">
-            <img
-              class="listing-img"
-              src="assets/appartment-1.jpg"
-              rel="image of appartment"
-            />
-            <div class="cards-content">
-              <h1 class="listing-price">80 000 ₾</h1>
-              <div class="flex">
-                <ion-icon class="listing-details" name="location"></ion-icon>
-                <p class="listing-details">თბილისი ი.ჭავჭავაძის 53</p>
-              </div>
-              <div class="listing-description-container">
-                <div class="flex">
-                  <ion-icon class="listing-details" name="bed"></ion-icon>
-                  <p class="listing-details">2</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="expand"></ion-icon>
-                  <p class="listing-details">55მ</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="pin"></ion-icon>
-                  <p class="listing-details">0160</p>
-                </div>
-              </div>
-            </div>
-          </figure>
-          <figure class="listing-card">
-            <img
-              class="listing-img"
-              src="assets/appartment-1.jpg"
-              rel="image of appartment"
-            />
-            <div class="cards-content">
-              <h1 class="listing-price">80 000 ₾</h1>
-              <div class="flex">
-                <ion-icon class="listing-details" name="location"></ion-icon>
-                <p class="listing-details">თბილისი ი.ჭავჭავაძის 53</p>
-              </div>
-              <div class="listing-description-container">
-                <div class="flex">
-                  <ion-icon class="listing-details" name="bed"></ion-icon>
-                  <p class="listing-details">2</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="expand"></ion-icon>
-                  <p class="listing-details">55მ</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="pin"></ion-icon>
-                  <p class="listing-details">0160</p>
-                </div>
-              </div>
-            </div>
-          </figure>
-          <figure class="listing-card">
-            <img
-              class="listing-img"
-              src="assets/appartment-1.jpg"
-              rel="image of appartment"
-            />
-            <div class="cards-content">
-              <h1 class="listing-price">80 000 ₾</h1>
-              <div class="flex">
-                <ion-icon class="listing-details" name="location"></ion-icon>
-                <p class="listing-details">თბილისი ი.ჭავჭავაძის 53</p>
-              </div>
-              <div class="listing-description-container">
-                <div class="flex">
-                  <ion-icon class="listing-details" name="bed"></ion-icon>
-                  <p class="listing-details">2</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="expand"></ion-icon>
-                  <p class="listing-details">55მ</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="pin"></ion-icon>
-                  <p class="listing-details">0160</p>
-                </div>
-              </div>
-            </div>
-          </figure>
-          <figure class="listing-card">
-            <img
-              class="listing-img"
-              src="assets/appartment-1.jpg"
-              rel="image of appartment"
-            />
-            <div class="cards-content">
-              <h1 class="listing-price">80 000 ₾</h1>
-              <div class="flex">
-                <ion-icon class="listing-details" name="location"></ion-icon>
-                <p class="listing-details">თბილისი ი.ჭავჭავაძის 53</p>
-              </div>
-              <div class="listing-description-container">
-                <div class="flex">
-                  <ion-icon class="listing-details" name="bed"></ion-icon>
-                  <p class="listing-details">2</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="expand"></ion-icon>
-                  <p class="listing-details">55მ</p>
-                </div>
-                <div class="flex">
-                  <ion-icon class="listing-details" name="pin"></ion-icon>
-                  <p class="listing-details">0160</p>
-                </div>
-              </div>
-            </div>
-          </figure>
         </div>
       </section>
       <div class="overlay hidden"></div>

@@ -82,13 +82,17 @@
             </div>
           </div>
         </div>
+
+
       </section>
         <section class="section-listing-options">
-          <ion-icon name="arrow-back-outline"></ion-icon>
-          <ion-icon name="arrow-forward-outline"></ion-icon>
-          <h1>ბინები მსგავს ლოკაციაზე</h1>
-          <div class="listings-container container">
-            <figure class="listing-card">
+          <ion-icon class="arrow-left" name="arrow-back-outline"></ion-icon>
+          <ion-icon class="arrow-right"name="arrow-forward-outline"></ion-icon>
+          <div class="container heading-conatiner">
+            <h1 class="heading-options">ბინები მსგავს ლოკაციაზე</h1>
+          </div>
+          <div class="listings-container container slider">
+            <figure class="listing-card slide">
               <img
                 class="listing-img"
                 src="../assets/appartment-1.jpg"
@@ -116,7 +120,7 @@
                 </div>
               </div>
             </figure>
-            <figure class="listing-card">
+            <figure class="listing-card slide">
               <img
                 class="listing-img"
                 src="../assets/appartment-1.jpg"
@@ -144,7 +148,7 @@
                 </div>
               </div>
             </figure>
-            <figure class="listing-card">
+            <figure class="listing-card slide">
               <img
                 class="listing-img"
                 src="../assets/appartment-1.jpg"
@@ -172,7 +176,7 @@
                 </div>
               </div>
             </figure>
-            <figure class="listing-card">
+            <figure class="listing-card slide">
               <img
                 class="listing-img"
                 src="../assets/appartment-1.jpg"
@@ -202,12 +206,19 @@
             </figure>
           </div>
         </section>
+      <div class="overlay hidden"></div>
+      <div class="modal-window hidden">
+        <h3 class="modal-heading">გსურთ წაშალოთ ლისტინგი?</h3>
+        <div class="btns-container">
+          <button class="btn btn-outline btn-secondary">გაუქმება</button>
+          <button class="btn btn-full btn-secondary add-agent-btn">
+              დადასტურება
+          </button>
+        </div>
+      </div>
 
       
-      
-
-
-
+  
     </main>
 
     <script
